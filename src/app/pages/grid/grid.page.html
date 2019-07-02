@@ -1,0 +1,49 @@
+<app-header titulo = "Grid"></app-header>
+
+<!-- Los grid tienen un ancho de 12, es igual al grid de bootstrap. Si declaro 3 columnas, cada una tendra 
+un ancho de 3. -->
+<ion-content fullscreen>
+
+  <!-- TRANSPARENCIA EN EL HEADER SOLO PARA IOS (NO PARA MATERIAL DESING) 
+    en ION-CONTENT agrego FULLSCREEN y en el ION-HEADER agrego el atributo TRANSLUCENT 
+    <ion-header no-border translucent> -->
+
+
+<ion-grid fixed> 
+  <!-- fixed agrega un margen adicional para que se vea mejor en pantallas mas grandes domo de un escritorio de PC. -->
+
+  <!-- <ion-row>
+    
+    <ion-col *ngFor="let c of [1,1,1,1,1,1,1,1,1,1,1,1]; let i = index"> 
+      Hola {{i+1}}
+      
+      Si el contenido hace que el ancho deba excederse, entonces ionic va a ajustar los col de forma automatica. Por ejemplo 
+      Si le agrego la palabra Hola, me hace 9 columnas arriba y 3 abajo. 
+
+    </ion-col>
+  </ion-row> -->
+
+<ion-row>
+  <ion-col *ngFor="let c of [1,1,1,1,1,1,1,1,1,1,1,1];" size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12">
+    <ion-card>
+      <ion-img src="/assets/shapes.svg"></ion-img>
+      <ion-card-header>
+        <ion-card-subtitle>
+          Card Subtitle
+        </ion-card-subtitle>
+        <ion-card-title>
+          Card Title
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis facilis sunt corporis ad deserunt pariatur reprehenderit suscipit, consectetur ea! Ex aliquid unde fugiat veritatis voluptate, ipsa repudiandae debitis necessitatibus sit.
+      </ion-card-content>
+    </ion-card>
+  </ion-col>
+</ion-row>
+
+
+
+</ion-grid>
+
+</ion-content>

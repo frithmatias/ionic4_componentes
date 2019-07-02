@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-buttons slot="start"> 
+      <!-- slot="start" sirve para que no se encime al titulo "Componentes" -->
+      
+      <!-- forma mas difícil  -->
+      <ion-button (click)="abrirMenu()">
+        <ion-icon name="menu" slot="icon-only"></ion-icon>
+      </ion-button>
+    
+      <!-- forma mas fácil -->
+      <ion-menu-button color="primary" menu="menuLista"></ion-menu-button>
+    </ion-buttons>
+
+
+
+    <ion-title color="primary">Componentes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content>
+  <ion-list>
+      <ion-item *ngFor="let componente of componentes | async" [routerLink]="componente.redirectTo" detail>
+        <ion-icon slot="start" [name]="componente.icon" color="primary"></ion-icon> 
+        <ion-label>{{componente.name}}</ion-label>
+      </ion-item>
+  </ion-list>
+  <!-- <ion-button routerLink="/alert">Alert</ion-button>
+  <ion-button routerLink="/action-sheet">Action Sheet</ion-button> -->
+</ion-content>

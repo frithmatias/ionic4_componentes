@@ -1,0 +1,19 @@
+<app-header titulo="Infinite Scroll"></app-header>
+
+<ion-content>
+<ion-list>
+  <ion-item *ngFor="let item of data; let i = index">
+    <ion-label>Item {{ i + 1 }}</ion-label>
+    <!-- La idea es que cuando estoy llegando al final cargue el resto de los items. -->
+  </ion-item>
+</ion-list>
+
+
+<ion-infinite-scroll threshold="150px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="crescent"
+      loadingText="Cargando...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

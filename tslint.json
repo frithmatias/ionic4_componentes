@@ -4,6 +4,10 @@
     "codelyzer"
   ],
   "rules": {
+    "indent": [
+      true,
+      "tabs"
+    ],
     "array-type": false,
     "arrow-parens": false,
     "deprecation": {

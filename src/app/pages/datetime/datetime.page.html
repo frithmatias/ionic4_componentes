@@ -1,0 +1,103 @@
+<app-header titulo="DateTime"></app-header>
+
+<ion-content>
+
+
+<ion-list>
+  <ion-list-header>
+    <ion-label>Datos de Nacimiento</ion-label>
+  </ion-list-header>
+  
+  <ion-item>
+    <ion-label>Fecha de Nacimiento</ion-label>
+
+    <!-- <ion-datetime placeholder="Nacimiento" [value]="fcNac"></ion-datetime> -->
+
+    <!-- 
+    Para evitar el siguiente error 
+    
+    Error parsing date: "Thu Jun 20 2019 19:06:47 GMT-0300 (hora estándar de Argentina)". 
+    Please provide a valid ISO 8601 datetime format: https://www.w3.org/TR/NOTE-datetime
+
+    Puedo utilizar interpolación de strings, y pasarlo por el pipe date para darle formato a la fecha. 
+    -->
+
+    <!-- <ion-datetime 
+      placeholder="Nacimiento" 
+      value="{{fcNac | date: 'yyyy MM dd'}}" 
+      display-format="YYYY MMMM DD" 
+      cancelText="Cancelar!" 
+      [(ngModel)]="fcNac" 
+      (ionChange)="cambioFecha( $event )">
+    </ion-datetime> -->
+
+    <!-- Al usar [(ngModel)] me vuelve a dar OTRA VEZ el error anterior.  -->
+
+    <!-- Usamos toISOString() de JS -->
+    <ion-datetime 
+      placeholder="Nacimiento" 
+      display-format="YYYY MMMM DD" 
+      cancelText="Cancelar!" 
+      [value]="fcNac.toISOString()" 
+      (ionChange)="cambioFecha( $event )">
+    </ion-datetime>
+
+    <!-- En el objeto voy a ver la fecha en el formato ISO, y no me va a servir este formato.
+    detail:
+    value: "2011-01-19T19:25:32.943-03:00"
+
+    Para convertirla a una fecha de JS puedo usar 
+
+    onsole.log('Date formato ISO: ', e.detail.value);
+    -> Date formato ISO: 2019-05-20T19:30:00.194-03:00
+
+		console.log('Date formato JS: ', new Date(e.detail.value));
+    -> Date formato JS: Mon May 20 2019 19:30:00 GMT-0300 (hora estándar de Argentina)
+    -->
+
+
+
+  </ion-item>
+
+
+
+
+  <!-- 50. ion-datetime - Parte 2 - Personalización -->
+  <ion-list-header>
+      <ion-label>Restricciones</ion-label>
+    </ion-list-header>
+
+<ion-item>
+  <ion-label>Min y Max</ion-label>
+  <ion-datetime placeholder="yyyy-mm-dd"
+      display-format="YYYY MMMM DD"
+      min="2015-01-01"
+      max="2015-12-31">
+    </ion-datetime>
+</ion-item>
+
+<ion-item>
+    <ion-label>Años</ion-label>
+    <ion-datetime placeholder="YYYY"
+        display-format="YYYY"
+        min="2015"
+        max="2025"
+        value="2020">
+      </ion-datetime>
+  </ion-item>
+
+
+  <!-- 
+  Con picerOptions puedo obtener el objeto con los datos de la fecha seleccionada 
+  {month: {…}, day: {…}, year: {…}}
+      day: {text: "19", value: 19, columnIndex: 1}
+      month: {text: "May", value: 5, columnIndex: 0}
+      year: {text: "2019", value: 2019, columnIndex: 2}
+   -->
+  <ion-item>
+      <ion-label>Custom Date</ion-label>
+      <ion-datetime [pickerOptions]="customPickerOptions" [value]="customDate.toISOString()" >
+        </ion-datetime>
+    </ion-item>
+</ion-list>
+</ion-content>

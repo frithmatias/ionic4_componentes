@@ -1,0 +1,64 @@
+<app-header titulo="Segments"></app-header>
+<ion-toolbar>
+
+  <!-- Default Segment -->
+  <ion-segment (ionChange)="segmentChanged($event)" color="tertiary">
+
+      <ion-segment-button value="">
+          <ion-label>Todos</ion-label>
+        </ion-segment-button>
+
+    <ion-segment-button value="Marvel">
+      <ion-label>Marvel</ion-label>
+    </ion-segment-button>
+    
+    <ion-segment-button value="dc">
+      <ion-label>DC</ion-label>
+    </ion-segment-button>
+  
+  </ion-segment>
+
+</ion-toolbar>
+  
+    <!-- {
+      "superhero":"Flash", 
+      "publisher":"DC Comics", 
+      "alter_ego":"Jay Garrick",
+      "first_appearance":"Flash Comics #1",
+      "characters":"Jay Garrick, Barry Allen, Wally West, Bart Allen"
+  }, -->
+
+<!-- al filtro le paso el argumento a buscar "textoBuscar" y va a buscar el la columna "publisher" -->
+<ion-content>
+
+  <ion-list *ngIf="superheroes | async">
+    <ion-item *ngFor="let heroe of (superheroes | async) | filtro: textoBuscar: 'publisher'" class="animated fadeIn"> 
+      <ion-label>
+        <h3>{{heroe.superhero}} <small> {{ heroe.alger_ego }} </small></h3>
+        <p>
+          {{ heroe.first_appearance }}
+        </p>
+      </ion-label>
+      <ion-label slot="end" text-right>
+        {{heroe.publisher}}
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+<ion-list *ngIf="!(superheroes | async)">
+  <ion-item *ngFor="let item of [1,1,1,1,1,1]" class="animated flash slow infinite">
+    <ion-label>
+      <h3>
+        <ion-skeleton-text width="75%"></ion-skeleton-text>
+      </h3>
+      <p>
+          <ion-skeleton-text width="100%"></ion-skeleton-text>
+      </p>
+    </ion-label>
+    <ion-label slot="end" text-right>
+      <ion-skeleton-text width="40px"  text-right></ion-skeleton-text>
+    </ion-label>
+  </ion-item>
+</ion-list>
+
+</ion-content>

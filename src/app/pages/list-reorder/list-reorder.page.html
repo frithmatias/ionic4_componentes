@@ -1,0 +1,54 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title> List - Reorder</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+<ion-list>
+
+  <ion-reorder-group [disabled]="false" (ionItemReorder)="reorder($event)">
+    <!-- El icono para desplazar y reorganizar no aparece hasta que yo pongo [disabled]="false" 
+    Cuando deslizo el item voy a notar que se traba, para evitar eso tengo que llamar a un evento 
+    del reorder justo cuando se suelta.
+
+    el evento es detail.complete()
+
+    Ahora el evento reorder() me imprime el objeto y lo que me interesa es detail.from y detail.to
+
+    CustomEvent {isTrusted: false, detail: {…}, type: "ionItemReorder", 
+    target:  ion-reorder-group.md.reorder-enabled.hydrated.reorder-list-active, 
+    currentTarget: ion-reorder-group.md.reorder-enabled.hydrated.reorder-list-active, …}
+      bubbles: true
+      cancelBubble: false
+      cancelable: true
+      composed: true
+      currentTarget: null
+      defaultPrevented: false
+      detail:
+        complete: ƒ ()
+        from: 0
+        to: 3
+
+
+    tenemos que cambiar manualmente la nueva posición del objeto. Anteriormente Ionic nos brindaba una función que lo 
+    hacía pero ahora, tenemos que reordenar la posición nosotros manualemente.
+    -->
+
+    <ion-item *ngFor="let personaje of personajes">
+      <ion-label>{{personaje}}</ion-label>
+      <ion-reorder slot="end"></ion-reorder>
+    </ion-item>
+
+  </ion-reorder-group>  
+
+</ion-list>
+
+<ion-button expand="full" (click)="guardar()">
+  Guardar
+</ion-button>
+</ion-content>

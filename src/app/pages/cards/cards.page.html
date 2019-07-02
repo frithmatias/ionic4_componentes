@@ -1,0 +1,39 @@
+<app-header [titulo]="titulo"></app-header>
+
+
+<ion-content>
+    <ion-card mode="ios" color="primary">
+        <ion-card-header>
+          <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+          <ion-card-title>Card Title</ion-card-title>
+        </ion-card-header>
+      
+        <ion-card-content>
+          Keep close to Nature's heart... and break clear away, once in awhile,
+          and climb a mountain or spend a week in the woods. Wash your spirit clean.
+        </ion-card-content>
+      </ion-card>
+
+
+      <ion-card>
+        <ion-item color="success">
+          <ion-icon color="light" slot="start" name="pin"></ion-icon>
+          <ion-label>Marcador</ion-label>
+        </ion-item>
+        <ion-card-content>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem natus exercitationem quam perspiciatis, autem consectetur fugit maiores voluptatibus? Vero maxime minus ipsum beatae recusandae pariatur iure praesentium unde aut cumque.
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card>
+        <!-- 
+          la diferencia entre el img y el ion-img es que ion-img se carga solo cuando es necesario, 
+          es decir cuando esta por entrar al viewpoint, a diferencia del img que se carga a penas 
+          la página es renderizada. -->
+       <img>
+        <ion-img src="/assets/shapes.svg"></ion-img>
+        <ion-card-content>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem eius labore, perferendis laborum tempore nulla, voluptatem animi possimus nam ipsum quisquam molestiae consectetur. Ipsum quisquam ad veniam enim suscipit expedita?
+        </ion-card-content>
+      </ion-card>
+</ion-content>

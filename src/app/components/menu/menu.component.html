@@ -1,0 +1,34 @@
+<!-- El icono de la hamburguesa para desplegar el menu lo trabajo en inicio.page.html -->
+    <ion-menu side="start" menuId="menuLista" contentId="menuPrincipal">
+        <ion-header>
+          <ion-toolbar color="primary">
+            <ion-title>Start Menu</ion-title>
+          </ion-toolbar>
+        </ion-header>
+        <ion-content>
+          <ion-list >
+            <!-- como componentes es un observable tengo que pasarlo por el pipe async -->
+
+            <!-- como mi raiz ahora no es app sino es components, para que funcione routerLink ya no importo 
+            RouterModule desde app.module.ts sino en components.module.ts -->
+            
+            <!-- ahora quiero cerrar el menu automaticamente al seleccionar un item de la lista, para eso antes
+            había solo una directiva, ahora es un poco mas rebuscado tengo que usar <ion-menu-toggle> -->
+            
+            <ion-menu-toggle *ngFor="let componente of componentes | async">
+              <ion-item [routerLink]="componente.redirectTo">
+                <ion-icon slot="start" [name]="componente.icon"></ion-icon>
+                {{ componente.name}} 
+              </ion-item>
+            </ion-menu-toggle>
+
+              <!-- <ion-menu-toggle *ngFor="VA ACA">
+                <ion-item>
+                  <ion-icon></ion-icon>
+                </ion-item>
+              </ion-menu-toggle> -->
+
+          </ion-list>
+        </ion-content>
+      </ion-menu>
+

@@ -1,0 +1,20 @@
+<ion-header no-border>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>searchbar</ion-title>
+  </ion-toolbar>
+<ion-searchbar animated
+(ionChange)="buscar($event)"></ion-searchbar> 
+<!-- animated es un atributo que hace que se mueva la palabra seach solo funciona en IOS, NO FUNCIONA EN MATERIAL DESIGN. -->
+
+</ion-header>
+
+<ion-content>
+<ion-list>
+  <ion-item *ngFor="let album of albumes | filtro: textoBuscar: 'title'">
+    {{ album.title }}
+  </ion-item>
+</ion-list>
+</ion-content>
