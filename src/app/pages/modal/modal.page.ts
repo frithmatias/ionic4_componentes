@@ -25,6 +25,9 @@ export class ModalPage implements OnInit {
 
 		// una promesa que escucha cuando el modal se cierra.
 		const { data } = await modal.onDidDismiss();
+		console.log('Retorno del Modal:');
+		console.log(data);
+		console.log(JSON.stringify(data));
 		this.data = data;
 	}
 }
